@@ -25,18 +25,111 @@
 </center>
 <div style="margin-top: 1%; margin-left: 45%; font-size: 22px">
 <ol>
-  <li>   Mentor1</li>
-  <li>   Mentor2</li>
-  <li>   Mentor3</li>
-  <li>   Mentor4</li>
-  <li>   Mentor5</li>
-  <li>   Mentor6</li>
-  <li>   Mentor7</li>
-  <li>   Mentor8</li>
-  <li>   Mentor9</li>
-  <li>   Mentor10</li>
+  <li id="0">   Mentor1</li>
+  <li id="1">   Mentor2</li>
+  <li id="2">   Mentor3</li>
+  <li id="3">   Mentor4</li>
+  <li id="4">   Mentor5</li>
 </ol>
 </div>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script>
+  var config = {
+      apiKey: "AIzaSyBg67_crjxpkJUcvtEJB7qNrLEWk8msfdg",
+      authDomain: "ment-hers.firebaseapp.com",
+      databaseURL: "https://ment-hers.firebaseio.com",
+      projectId: "ment-hers",
+      storageBucket: "ment-hers.appspot.com",
+      messagingSenderId: "939051541561"
+    };
+
+    firebase.initializeApp(config);
+
+  </script>
+
+<script>
+function arrf(){
+var db = firebase.firestore();
+    let promise = new Promise(function(resolve, reject) {
+    key = windows.localStorage.getItem("userId")
+    db.collection("Users").doc(key)
+    .get()
+    .then(function(doc){
+            doc=doc.data()
+            arr = []
+            if(doc.Python == 1){
+                arr.push("Python");
+                }
+            if(doc.C == 1 ){
+                arr.push("C");
+                }
+            if(doc.HTML == 1){
+                arr.push("HTML");
+                }
+            if (doc.Java == 1){
+                arr.push("Java");
+                }
+            if(doc.R == 1){
+                arr.push("R");
+                }
+            if(doc.SQL == 1){
+                arr.push("SQL");
+                }
+            if(doc.Unity == 1){
+                arr.push("Unity");
+                }
+            //console.log(arr)
+            resolve(arr);
+
+
+        });
+      
+  })
+
+    promise.then(
+     function(result) {
+        console.log('xd', result)
+      }
+    )
+    var db = firebase.firestore();
+    var people = db.collection("Users");
+    //var i;
+    people.where("Mentor", "==", true)
+    .get()
+    .then(function(querySnapshot){
+      /*querySnapshot.forEach(function(doc){
+
+      
+        name = doc.data().
+
+
+      })*/
+      mentors = querySnapshot.slice(0, 4)
+      var i=0;
+      mentors.forEach(function(doc){
+        name = doc.data().name;
+        console.log(name)
+        document.getElementById(String(i)).innerText = name;
+        i++;
+      })
+    }).then(function(){
+      ; console.log(arr);
+    })
+
+
+
+  //  for (i=0; i<arr_func.size; i++) {
+    //  people.where("Mentor", "==", true).where(arr[i], "==", 1)
+
+   //    }
+  
+    }
+
+
+
+  </script>
+
 
 
 
