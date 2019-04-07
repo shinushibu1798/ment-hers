@@ -11,16 +11,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Ment-Her</title>
+
+<style>
+    .btn-primary {
+    color: #fff;
+    background-color: #030131;
+    border-color: #030131;
+}
+</style>
+
   </head>
   <body>
 
   <center>
-      <img src="../images/Ment-Her-Logo.png" style="width: 20%; height: 20%; style="margin-top: 10%">
-        <h1>
-      Log into Ment-Her
+      <img src="./images/Ment-Her-Logo.png" style="width: 25%; height: 25%">
+        <h1 style="margin-top: 1%">
+      Login
     </center>
     </h1>
-    <form style="margin-right: 30%; margin-left: 30%; margin-top: 5%">
+    <form style="margin-right: 35%; margin-left: 35%; margin-top: 1%">
       <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -29,11 +38,13 @@
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
+  </div >
+
   <center>
-    <button type="submit" class="btn btn-primary"><a href="profile.html" style="color: white"> Submit</a></button>
-  <small id="newAccount" class="form-text text-muted">Need an account? <a href="menteeSign.html"> Create your Ment-Her account </a></small>
+    <button type="submit" class="btn btn-primary"><a href="profile.html" style="color: white; margin-top: 6%"> Submit</a></button>
+  <small id="newAccount" class="form-text text-muted" style="margin-top:4%">Need an account? <a href="menteeSign.html"> Create your Ment-Her account </a></small>
 </center>
+<br>
 
   </form>
 
@@ -44,5 +55,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script>
+	// Initialize Firebase
+  	var config = {
+    	apiKey: "AIzaSyBg67_crjxpkJUcvtEJB7qNrLEWk8msfdg",
+    	authDomain: "ment-hers.firebaseapp.com",
+    	databaseURL: "https://ment-hers.firebaseio.com",
+    	projectId: "ment-hers",
+    	storageBucket: "ment-hers.appspot.com",
+    	messagingSenderId: "939051541561"
+  	};
+  	firebase.initializeApp(config);
+    </script>
   </body>
 </html>
