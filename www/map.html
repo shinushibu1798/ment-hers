@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
     <style>
       /* Set the size of the div element that contains the map */
       #map {
@@ -10,28 +13,69 @@
     </style>
   </head>
   <body>
-
-    <h3>Mentors Near You</h3>
+<a href="profile.html" style="margin-top: 5%; margin-left: 5%"><img src="./images/backArrow.png" style="width: 3%; height: 3%; margin-top: 3%; margin-left: 5%"></a>
+    <center>
+    <h1>Mentors Near You</h3>
+    </center>
     <!--The div element for the map -->
-    <div id="map"></div>
-    <script>
+
+<script>
+  // Initialize Firebase
+
+  var config = {
+    apiKey: "AIzaSyBg67_crjxpkJUcvtEJB7qNrLEWk8msfdg",
+    authDomain: "ment-hers.firebaseapp.com",
+    databaseURL: "https://ment-hers.firebaseio.com",
+    projectId: "ment-hers",
+    storageBucket: "ment-hers.appspot.com",
+    messagingSenderId: "939051541561"
+  };
+
+  firebase.initializeApp(config);
+  var db = firebase.firestore();
+
+</script>
+
+
+<div id="map"></div>
+
+    <div id="dynamic">
+    </div>
+
+        <script>
+      var people = db.collection("Users");
+      var initMap, codeAddress;
+  arr = [];
+  people
+    .where("Mentor", "==", true)
+    .get()
+    .then(function(querySnapshot) {
+       querySnapshot.forEach(function(doc) {
+         arr.push(doc.data().Address);
+       })
+     })
+    .then(function() {
+;      console.log(arr);
+
     var geocoder;
     var map;
-    var addresses = ['vermont', 'new york'];
-    var mentors = ['mentor 1', 'mentor 2']
+    var addresses = arr;
+    //var mentors = ['mentor 1', 'mentor 2']
     var pic = "./images/girl.png"
-    function initMap() {
+    initMap = function() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: -34.397, lng: 150.644}
+          zoom: 14,
+          center: {lat: 32.7157, lng: -117.1611}
         });
         geocoder = new google.maps.Geocoder();
         for (var x = 0; x < addresses.length; x++) {
           codeAddress(addresses[x], geocoder, map)
         }
+
+
       }
 
-      function codeAddress(address, geocoder, resultsMap) {
+      codeAddress = function(address, geocoder, resultsMap) {
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
@@ -44,24 +88,17 @@
             alert('Geocode was not successful for the following reason: ' + status);
           }
         });
+
+
       }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYtRy4rI2VCFXr_WqV9NtG50jisUDRQfc&callback=initMap">
-    </script>
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBg67_crjxpkJUcvtEJB7qNrLEWk8msfdg",
-    authDomain: "ment-hers.firebaseapp.com",
-    databaseURL: "https://ment-hers.firebaseio.com",
-    projectId: "ment-hers",
-    storageBucket: "ment-hers.appspot.com",
-    messagingSenderId: "939051541561"
-  };
-  firebase.initializeApp(config);
-</script>
+
+                      var scriptTag = document.createElement('script');
+
+        scriptTag.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyDYtRy4rI2VCFXr_WqV9NtG50jisUDRQfc&callback=initMap")
+
+        document.getElementById('dynamic').appendChild(scriptTag);
+
+    });
+  </script>
   </body>
 </html>
