@@ -32,7 +32,6 @@
     <style>
       #locationField, #controls {
         position: relative;
-        width: 480px;
       }
       #autocomplete {
         position: absolute;
@@ -48,10 +47,7 @@
         font-family: "Roboto";
       }
       #address {
-        border: 1px solid #000090;
-        background-color: #f0f9ff;
-        width: 480px;
-        padding-right: 2px;
+
       }
       #address td {
         font-size: 10pt;
@@ -70,7 +66,12 @@
         margin-bottom: 2px;
       }
       .bootstrap-tagsinput .tag {
-        background-color: lightblue;
+        border-radius: 5px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        background-color: #030131;
       }
     </style>
 
@@ -79,22 +80,22 @@
   </head>
   <body>
 
-    <h1 style="margin-top: 10%">
+    <h1 style="margin-top: 5%">
         <center>
       Create an Account
     </center>
     </h1>
-    <form style="margin-right: 30%; margin-left: 30%; margin-top: 5%">
+    <form style="margin-right: 30%; margin-left: 30%; margin-top: 3%">
       <div class="form-group">
         <label for="inputName">Full Name</label>
         <input type="name" class="form-control" id="name" placeholder="Enter full name">
   </div>
 
   <div class="form-group">
-    <label for="inputLocation">Location</label>
+    <label for="inputLocation">Search Location</label>
 </div>
 
-  <div class="form-group" id="locationField" style="margin-top:-3%">
+  <div class="form-group" id="locationField" style=" margin-top: -3%">
      <input id="autocomplete"
             class="form-control"
             placeholder="Enter your address"
@@ -102,46 +103,57 @@
             type="text">
    </div>
 
+   <table id="address" style=" margin-top: 5%">
+       <tr>
+         <td class="label">Street address</td>
+         <td class="slimField"><input class="field" id="street_number" disabled="true"/></td>
+         <td class="wideField" colspan="2"><input class="field" id="route" disabled="true"/></td>
+       </tr>
+       <tr>
+         <td class="label">City</td>
+         <td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"/></td>
+       </tr>
+       <tr>
+         <td class="label">State</td>
+         <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"/></td>
+         <td class="label">Zip code</td>
+         <td class="wideField"><input class="field" id="postal_code" disabled="true"/></td>
+       </tr>
+       <tr>
+         <td class="label">Country</td>
+         <td class="wideField" colspan="3"><input class="field" id="country" disabled="true"/></td>
+       </tr>
+     </table>
 
-  <div class="form-group" style="margin-top:7%">
-    <label for="inputSkills">Input Skills</label>
-    <input type="text" data-role="tagsinput" class="form-control" />
+
+  <div class="form-group" style="margin-top:4%">
+    <label for="inputSkills">Input Skills</label> <br>
+    <input type="text" data-role="tagsinput" class="form-control" placeholder="Add skills">
   </div>
 </div>
 
+<div class="form-group">
+  <label for="inputName"> Short Bio</label>
+  <input type="name" class="form-control" id="name" placeholder="Enter short bio (ex. goals, passions, etc.)">
+</div>
 
-  <div class="form-group" style="margin-top:7%">
+
+  <div class="form-group" style="margin-top:4%">
     <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group" style="margin-top:4%">
+    <label for="exampleInputPassword1">Confirm Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
   <center>
     <button style="text-decoration: none" type="submit" class="btn btn-primary"><a href="profile.html" style="color: white"> Continue</a></button>
 
 </center>
+<br></br><br></br>
 
   </form>
 
-  <table id="address">
-      <tr>
-        <td class="label">Street address</td>
-        <td class="slimField"><input class="field" id="street_number" disabled="true"/></td>
-        <td class="wideField" colspan="2"><input class="field" id="route" disabled="true"/></td>
-      </tr>
-      <tr>
-        <td class="label">City</td>
-        <td class="wideField" colspan="3"><input class="field" id="locality" disabled="true"/></td>
-      </tr>
-      <tr>
-        <td class="label">State</td>
-        <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"/></td>
-        <td class="label">Zip code</td>
-        <td class="wideField"><input class="field" id="postal_code" disabled="true"/></td>
-      </tr>
-      <tr>
-        <td class="label">Country</td>
-        <td class="wideField" colspan="3"><input class="field" id="country" disabled="true"/></td>
-      </tr>
-    </table>
 
   <script>
   // This sample uses the Autocomplete widget to help the user select a
